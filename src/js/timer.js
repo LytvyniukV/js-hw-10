@@ -25,27 +25,24 @@ const showMessage = () => {
   });
 };
 
-let userSelectedDate = new Date();
-
-flatpickr(fieldToChooseDateEl, {
+const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onChange(selectedDates, dateStr) {
-    console.log(dateStr);
-    userSelectedDate = selectedDates[0];
+  onClose(selectedDates) {
     if (selectedDates[0] <= new Date()) {
       showMessage();
-      btnStartTimerEl.setAttribute('disabled', '');
-    } 
-    else {
-        btnStartTimerEl.removeAttribute('disabled')
+      btnStartTimerEl.disabled = true;
+    } else {
+      btnStartTimerEl.disabled = false;
     }
   },
-});
-btnStartTimerEl.addEventListener('click', () => {
-  console.log('mes');
-});
+};
+
+const calendar = flatpickr(fieldToChooseDateEl, options);
+
+let userSelectedDate = calendar.selectedDates[0];
 
 console.log(userSelectedDate);
+console.log(calendar.selectedDates);
