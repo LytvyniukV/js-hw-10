@@ -45,4 +45,3 @@ const calendar = flatpickr(fieldToChooseDateEl, options);
 let userSelectedDate = calendar.selectedDates[0];
 
 console.log(userSelectedDate);
-console.log(calendar.selectedDates);
