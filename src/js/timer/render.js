@@ -8,13 +8,8 @@ export const render = () => {
   const different = pickedDate - currentDate;
 
   const { days, hours, minutes, seconds } = convertMs(different);
-  if (different < 1) {
-    refs.days.textContent = '00';
-    refs.hours.textContent = '00';
-    refs.minutes.textContent = '00';
-    refs.seconds.textContent = '00';
-    return;
-  }
+  if (different < 1) return;
+  
   refs.days.textContent = days;
   refs.hours.textContent = hours;
   refs.minutes.textContent = minutes;
